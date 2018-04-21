@@ -1,0 +1,40 @@
+group 'com.barclays'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: "application"
+
+sourceCompatibility = 1.8
+
+mainClassName = "com.barclays.theatre.Application"
+
+repositories {
+    mavenCentral()
+}
+
+
+jar {
+    baseName = 'theatre-seating'
+    version = '1.0'
+}
+
+run {
+    standardInput = System.in
+}
+
+dependencies {
+
+    //following 3rd party dependencies used only for logging
+    //log4j2 logger dependencies
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.0'
+    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.9.5'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.5'
+
+    // following test dependencies used for test-case writing
+    testCompile "org.codehaus.groovy:groovy-all:2.4.13"
+    testCompile "org.spockframework:spock-core:1.1-groovy-2.4"
+
+
+}
